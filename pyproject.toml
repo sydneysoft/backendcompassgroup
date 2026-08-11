@@ -1,0 +1,26 @@
+[project]
+name = "bus-platform-backend"
+version = "0.2.0"
+description = "API-first bus ticket booking backend with PostgreSQL, transport-provider adapters, and payment orchestration."
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.128,<1.0",
+  "uvicorn[standard]>=0.34,<1.0",
+  "sqlalchemy>=2.0.50,<2.2",
+  "alembic>=1.18,<2.0",
+  "psycopg[binary]>=3.2,<4.0",
+  "pydantic>=2.13,<3.0",
+  "pydantic-settings>=2.14,<3.0",
+  "httpx>=0.28,<1.0",
+  "email-validator>=2.2,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9,<10",
+  "pytest-cov>=7,<8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

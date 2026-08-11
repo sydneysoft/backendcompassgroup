@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: busapp
+      POSTGRES_USER: busapp
+      POSTGRES_PASSWORD: busapp
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U busapp -d busapp"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - busapp_pgdata:/var/lib/postgresql/data
+
+volumes:
+  busapp_pgdata:

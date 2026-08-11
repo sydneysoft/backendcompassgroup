@@ -1,0 +1,26 @@
+Validation performed in the build environment
+=============================================
+
+1. Python syntax compilation:
+   python -m compileall -q app tests
+   Result: PASS
+
+2. Automated API/integration tests:
+   PYTHONPATH=. pytest -q
+   Result: 5 passed
+
+3. Alembic initial migration smoke test against SQLite:
+   alembic upgrade head
+   Result: PASS
+
+Created tables:
+- searches
+- journey_cache
+- booking_sessions
+- bookings
+- passengers
+- payments
+- tickets
+- refunds
+- promo_codes
+- audit_logs
