@@ -20,7 +20,8 @@ class Settings(BaseSettings):
     cors_origins: str = Field(
         default=(
             "http://localhost:5173,http://localhost:3000,"
-            "https://frontendcompassgroup.vercel.app"
+            "https://frontendcompassgroup.vercel.app,"
+            "https://orangegroup.vercel.app"
         )
     )
 
