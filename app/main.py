@@ -5,12 +5,17 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import api_router
 from app.core.config import get_settings
+from app.core.db import engine
+from app.models import Base
 
 settings = get_settings()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # The sandbox deployment may start with an empty SQLite database on a fresh
+    # serverless instance, so ensure the schema exists before serving requests.
+    Base.metadata.create_all(bind=engine)
     yield
 
 
