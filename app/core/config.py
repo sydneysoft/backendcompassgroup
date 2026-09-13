@@ -17,7 +17,12 @@ class Settings(BaseSettings):
     distribusion_api_key: str | None = None
     payments_mode: Literal["sandbox", "production"] = "sandbox"
     admin_api_key: str = "change-me"
-    cors_origins: str = Field(default="http://localhost:5173,http://localhost:3000")
+    cors_origins: str = Field(
+        default=(
+            "http://localhost:5173,http://localhost:3000,"
+            "https://frontendcompassgroup.vercel.app"
+        )
+    )
 
     @property
     def cors_origin_list(self) -> list[str]:
